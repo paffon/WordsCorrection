@@ -9,7 +9,7 @@ def levenshtein_distance(s1: str, s2: str) -> int:
 
     Example:
     >>> levenshtein_distance("kitten", "sitting")
-    2
+    3
 
     Explanation:
     The function calculates the Levenshtein distance between the strings
@@ -79,7 +79,7 @@ def correct_typo(word_with_typo, word_list):
     return sorted(
         word_list,
         key=lambda w: levenshtein_distance(word_with_typo, w)
-    )[0]
+    )[:10]
 
 
 # read "words_bank.txt" and get the words in it
@@ -89,4 +89,5 @@ with open("words_bank.txt", "r", encoding='utf-8') as f:
 input_word = "appple"  # Intentional typo
 corrected_word = correct_typo(input_word, words)
 print(f"Original Word:\t{input_word},\n"
-      f"Corrected Word:\t{corrected_word}")
+      f"Possible Words:\t{corrected_word}")
+pass
